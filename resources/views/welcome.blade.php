@@ -126,6 +126,19 @@
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
+
+                <a href="{{ route('auth.login') }}">ログイン</a>
+                <a href="{{ route('auth.logout') }}">ログアウト</a>
+                @auth
+                    <div>
+                        <h3>{{ Auth::user()->name }}</h3>
+                        <img src="{{ Auth::user()->avatar }}" width="48" height="48">
+                        <form method="post" action="{{ route('tweet') }}">
+                            @csrf
+                            <button type="submit">Hello Twitterする</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </body>
